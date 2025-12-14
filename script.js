@@ -13,115 +13,112 @@
         window.scrollTo(0, 0);
     }
 
-
-    // 2. Função para buscar versículo da API
+    // 2. Função para buscar versículo da API (MUDA APENAS 1X POR DIA)
     function versiculoDoDia() {
+        const hoje = new Date().toDateString(); // Data de hoje
+        const versiculoSalvo = localStorage.getItem('versiculo');
+        const dataSalva = localStorage.getItem('versiculoData');
+        
+        // Se já tem versículo de hoje, usa ele
+        if (versiculoSalvo && dataSalva === hoje) {
+            const dados = JSON.parse(versiculoSalvo);
+            document.getElementById('versiculo-texto').textContent = '"' + dados.texto + '"';
+            document.getElementById('versiculo-ref').textContent = '— ' + dados.referencia;
+            console.log('✅ Usando versículo salvo de hoje');
+            return;
+        }
+        
+        // Se não, busca um novo da API
+        console.log('🔍 Buscando novo versículo da API...');
+        
         fetch('https://www.abibliadigital.com.br/api/verses/nvi/random')
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('API retornou status: ' + response.status);
-                }
+                if (!response.ok) throw new Error('API falhou');
                 return response.json();
             })
             .then(data => {
                 const texto = data.text;
                 const referencia = data.book.name + ' ' + data.chapter + ':' + data.number;
                 
+                // Exibe o versículo
                 document.getElementById('versiculo-texto').textContent = '"' + texto + '"';
                 document.getElementById('versiculo-ref').textContent = '— ' + referencia;
+                
+                // Salva no localStorage com a data de hoje
+                localStorage.setItem('versiculo', JSON.stringify({ texto, referencia }));
+                localStorage.setItem('versiculoData', hoje);
+                
+                console.log('✅ Novo versículo exibido e salvo!');
             })
             .catch(error => {
-                console.error('❌ Erro na API:', error);
+                console.log('❌ Erro na API, usando fallback...');
                 
                 // Fallback se API falhar
                 document.getElementById('versiculo-texto').textContent = '"Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles."';
                 document.getElementById('versiculo-ref').textContent = '— Mateus 18:20';
+                
+                // Salva o fallback também
+                const fallback = {
+                    texto: 'Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles.',
+                    referencia: 'Mateus 18:20'
+                };
+                localStorage.setItem('versiculo', JSON.stringify(fallback));
+                localStorage.setItem('versiculoData', hoje);
             });
     }
 
-    // 3. Funcionalidade do Carrossel de Fotos
-    function carousel() {
-        const slidesContainer = document.getElementById('carouselSlides');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const totalSlides = slides.length;
-        let currentIndex = 0;
-        
-        // Se não houver slides, não faz nada.
-        if (totalSlides === 0) return; 
+    // 3. Funções do Carrossel
+    let slideIndex = 0;
 
-        // Função para mover o carrossel
-        function goToSlide(index) {
-            // Usa o offsetWidth do container para calcular o deslocamento correto.
-            const slideWidth = slidesContainer.offsetWidth; 
-            
-            if (index >= totalSlides) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = totalSlides - 1;
-            } else {
-                currentIndex = index;
-            }
-            
-            const offset = -currentIndex * slideWidth;
-            slidesContainer.style.transform = `translateX(${offset}px)`;
-        }
-
-        // Listener de Botões
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                goToSlide(currentIndex + 1);
-            });
-        }
-        
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                goToSlide(currentIndex - 1);
-            });
-        }
-        
-        // Ajuste no redimensionamento (Para recalcular a largura do slide em caso de mudança de tela)
-        window.addEventListener('resize', () => {
-            goToSlide(currentIndex);
-        });
-        
-        // Tenta avançar automaticamente a cada 5 segundos
-        setInterval(() => {
-            goToSlide(currentIndex + 1);
-        }, 5000);
-        
-        // Inicia o carrossel na posição correta
-        goToSlide(0); 
+    function mudarSlide(n) {
+        mostrarSlide(slideIndex += n);
     }
 
+    function slideAtual(n) {
+        mostrarSlide(slideIndex = n);
+    }
 
-    // 4. CHAMADA FINAL (ÚNICA): Executa tudo ao carregar a página
-    window.onload = function() {
+    function mostrarSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        if (n >= slides.length) { slideIndex = 0; }
+        if (n < 0) { slideIndex = slides.length - 1; }
+        
+        slides.forEach(slide => slide.classList.remove('ativo'));
+        dots.forEach(dot => dot.classList.remove('ativo'));
+        
+        slides[slideIndex].classList.add('ativo');
+        dots[slideIndex].classList.add('ativo');
+    }
+
+    // Mudança automática a cada 5 segundos
+    setInterval(() => {
+        mudarSlide(1);
+    }, 5000);
+
+    // 4. CHAMADA FINAL: Executa tudo ao carregar a página
+    document.addEventListener('DOMContentLoaded', function() {
         console.log('🚀 Inicializando todas as funcionalidades...');
         
         // Lógica de URL para a mensagem de sucesso do formulário de oração
         const urlParams = new URLSearchParams(window.location.search);
         const oracaoEnviada = urlParams.get('sent') === 'true';
-        const secaoOração = urlParams.get('section') === 'oracao';
+        const secaoOracao = urlParams.get('section') === 'oracao';
 
-        // 1. Inicializa funcionalidades (Versículo e Carrossel)
+        // Inicializa versículo
         versiculoDoDia(); 
-        carousel(); 
         
-        // 2. Decide qual seção mostrar ao carregar
-        if (oracaoEnviada && secaoOração) {
+        // Decide qual seção mostrar ao carregar
+        if (oracaoEnviada && secaoOracao) {
             mostrarSecao('oracao');
-            // Exibe a mensagem de sucesso
             const successMessage = document.getElementById('successMessage');
             if (successMessage) {
                  successMessage.style.display = 'block';
             }
-            // Limpa o parâmetro da URL
             window.history.replaceState({}, document.title, window.location.pathname + '#oracao');
         } else {
-            mostrarSecao('home'); // Se não for pedido de oração, inicia na home
+            mostrarSecao('home');
         }
-    };
+    });
 </script>

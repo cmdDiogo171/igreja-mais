@@ -45,6 +45,7 @@
 
         <section id="home" class="section" style="display: block;">
             <div class="home-grid-layout">
+                <!-- COLUNA ESQUERDA: Versículo -->
                 <div class="home-left-col">
                     <h3>📖 Versículo do Dia</h3>
                     <blockquote class="versiculo-box">
@@ -53,6 +54,7 @@
                     </blockquote>
                 </div>
 
+                <!-- COLUNA DIREITA: Programação -->
                 <div class="home-right-col">
                     <h2>Programação Fixa</h2>
                     
@@ -72,6 +74,7 @@
                     </div>
                 </div>
 
+                <!-- MAPA (Linha 2, Coluna 1) -->
                 <div class="mapa-content">
                     <div class="mapa-info">
                         <h4>📍 Nos Visite</h4>
@@ -93,6 +96,37 @@
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
+                    </div>
+                </div>
+
+                <!-- 🎯 CARROSSEL (Linha 2, Coluna 2 - AO LADO DO MAPA) -->
+                <div class="carrossel-container">
+                    <div class="carrossel">
+                        <button class="btn-anterior" onclick="mudarSlide(-1)">&#10094;</button>
+                        
+                        <div class="slides">
+                            <div class="slide ativo">
+                                <img src="WhatsApp Image 2025-12-14 at 16.06.28 (1).jpeg" alt="Terminologia Técnica">
+                            </div>
+                            <div class="slide">
+                                <img src="WhatsApp Image 2025-12-14 at 16.06.28.jpeg" alt="Anglicismos e Neologismos">
+                            </div>
+                            <div class="slide">
+                                <img src="WhatsApp Image 2025-12-14 at 16.06.49 (1).jpeg" alt="Formação de Palavras Técnicas">
+                            </div>
+                            <div class="slide">
+                                <img src="WhatsApp Image 2025-12-14 at 16.06.49.jpeg" alt="Definição Terminologia Técnica">
+                            </div>
+                        </div>
+                        
+                        <button class="btn-proximo" onclick="mudarSlide(1)">&#10095;</button>
+                    </div>
+                    
+                    <div class="indicadores">
+                        <span class="dot ativo" onclick="slideAtual(0)"></span>
+                        <span class="dot" onclick="slideAtual(1)"></span>
+                        <span class="dot" onclick="slideAtual(2)"></span>
+                        <span class="dot" onclick="slideAtual(3)"></span>
                     </div>
                 </div>
             </div>
@@ -157,12 +191,12 @@
 
                     <div class="schedule-item">
                         <h3>Quinta-feira</h3>
-                        <p>Culto - 19:30h</p>
+                        <p>Culto de Libertação- 19:30h</p>
                     </div>
 
                     <div class="schedule-item">
                         <h3>Segunda a Sexta</h3>
-                        <p>Oração - 20h</p>
+                        <p>Oração de Intercessão - 20h</p>
                     </div>
                 </div>
             </div>
@@ -206,15 +240,35 @@
     <script>
         console.log('⚡ Script carregado!');
 
+        // 1. Função para trocar de seção
         function mostrarSecao(secaoId) {
             var secoes = document.querySelectorAll('.section');
             secoes.forEach(secao => secao.style.display = 'none');
-            document.getElementById(secaoId).style.display = 'block';
+            
+            const secaoElement = document.getElementById(secaoId);
+            if (secaoElement) {
+                 secaoElement.style.display = 'block';
+            }
             window.scrollTo(0, 0);
         }
 
+        // 2. Função para buscar versículo da API (MUDA APENAS 1X POR DIA)
         function versiculoDoDia() {
-            console.log('🔍 Iniciando busca do versículo...');
+            const hoje = new Date().toDateString(); // Data de hoje
+            const versiculoSalvo = localStorage.getItem('versiculo');
+            const dataSalva = localStorage.getItem('versiculoData');
+            
+            // Se já tem versículo de hoje, usa ele
+            if (versiculoSalvo && dataSalva === hoje) {
+                const dados = JSON.parse(versiculoSalvo);
+                document.getElementById('versiculo-texto').textContent = '"' + dados.texto + '"';
+                document.getElementById('versiculo-ref').textContent = '— ' + dados.referencia;
+                console.log('✅ Usando versículo salvo de hoje');
+                return;
+            }
+            
+            // Se não, busca um novo da API
+            console.log('🔍 Buscando novo versículo da API...');
             
             fetch('https://www.abibliadigital.com.br/api/verses/nvi/random')
                 .then(response => {
@@ -225,20 +279,86 @@
                     const texto = data.text;
                     const referencia = data.book.name + ' ' + data.chapter + ':' + data.number;
                     
+                    // Exibe o versículo
                     document.getElementById('versiculo-texto').textContent = '"' + texto + '"';
                     document.getElementById('versiculo-ref').textContent = '— ' + referencia;
-                    console.log('✅ Versículo exibido!');
+                    
+                    // Salva no localStorage com a data de hoje
+                    localStorage.setItem('versiculo', JSON.stringify({ texto, referencia }));
+                    localStorage.setItem('versiculoData', hoje);
+                    
+                    console.log('✅ Novo versículo exibido e salvo!');
                 })
                 .catch(error => {
-                    console.log('🔄 Usando versículo fallback...');
+                    console.log('❌ Erro na API, usando fallback...');
+                    
+                    // Fallback se API falhar
                     document.getElementById('versiculo-texto').textContent = '"Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles."';
                     document.getElementById('versiculo-ref').textContent = '— Mateus 18:20';
+                    
+                    // Salva o fallback também
+                    const fallback = {
+                        texto: 'Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles.',
+                        referencia: 'Mateus 18:20'
+                    };
+                    localStorage.setItem('versiculo', JSON.stringify(fallback));
+                    localStorage.setItem('versiculoData', hoje);
                 });
         }
 
+        // 3. Funções do Carrossel
+        let slideIndex = 0;
+
+        function mudarSlide(n) {
+            mostrarSlide(slideIndex += n);
+        }
+
+        function slideAtual(n) {
+            mostrarSlide(slideIndex = n);
+        }
+
+        function mostrarSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+            
+            slides.forEach(slide => slide.classList.remove('ativo'));
+            dots.forEach(dot => dot.classList.remove('ativo'));
+            
+            slides[slideIndex].classList.add('ativo');
+            dots[slideIndex].classList.add('ativo');
+        }
+
+        // Mudança automática a cada 5 segundos
+        setInterval(() => {
+            mudarSlide(1);
+        }, 5000);
+
+        // 4. CHAMADA FINAL: Executa tudo ao carregar a página
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Página carregada!');
-            versiculoDoDia();
+            console.log('🚀 Inicializando todas as funcionalidades...');
+            
+            // Lógica de URL para a mensagem de sucesso do formulário de oração
+            const urlParams = new URLSearchParams(window.location.search);
+            const oracaoEnviada = urlParams.get('sent') === 'true';
+            const secaoOracao = urlParams.get('section') === 'oracao';
+
+            // Inicializa versículo
+            versiculoDoDia(); 
+            
+            // Decide qual seção mostrar ao carregar
+            if (oracaoEnviada && secaoOracao) {
+                mostrarSecao('oracao');
+                const successMessage = document.getElementById('successMessage');
+                if (successMessage) {
+                     successMessage.style.display = 'block';
+                }
+                window.history.replaceState({}, document.title, window.location.pathname + '#oracao');
+            } else {
+                mostrarSecao('home');
+            }
         });
     </script>
 
