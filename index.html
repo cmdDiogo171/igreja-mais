@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Igreja MAIS - Ministério Apostólico Intimidade Santa</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+
+    <div class="social-sidebar">
+
+        <a href="https://facebook.com/suapagina" target="_blank" class="social-icon">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+
+        </a>
+
+        <a href="https://www.instagram.com/igrejamaismarica?igsh=MXY2ZDFnOG93am13bA==" target="_blank" class="social-icon">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+
+        </a>
+
+        <a href="https://wa.me/5521987975838?text=Olá! Gostaria de fazer uma visita à igreja!" target="_blank" class="social-icon">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174879.png" alt="WhatsApp">
+
+        </a>
+
+    </div>
+
+
+
+    <header>
+
+        <div class="header-container">
+
+            <img src="WhatsApp Image 2025-12-12 at 14.34.16 (1).jpeg" alt="Logo MAIS" class="logo">
+
+            <div class="header-text">
+
+                <h1>IGREJA MAIS</h1>
+
+                <p class="subtitle">Ministério Apostólico Intimidade Santa</p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <nav>
+
+        <ul>
+
+            <li><a href="#" onclick="mostrarSecao('home')">Início</a></li>
+
+            <li><a href="#" onclick="mostrarSecao('quem-somos')">Quem Somos</a></li>
+
+            <li><a href="#" onclick="mostrarSecao('historia')">História</a></li>
+
+            <li><a href="#" onclick="mostrarSecao('celulas')">Células</a></li>
+
+            <li><a href="#" onclick="mostrarSecao('programacao')">Programação</a></li>
+
+            <li><a href="#" onclick="mostrarSecao('oracao')">Pedido de Oração</a></li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <main>
+
+
+
+        <section id="home" class="section">
+
+            <div class="home-grid-layout">
+
+                <div class="home-left-col">
+
+                    <h3>📖 Versículo do Dia</h3>
+
+                    <blockquote class="versiculo-box">
+
+                        <p id="versiculo-texto">Carregando versículo...</p>
+
+                        <cite id="versiculo-ref">—</cite>
+
+                    </blockquote>
+
+                </div>
+
+
+
+                <div class="home-right-col">
+
+                    <h2>Programação Fixa</h2>
+
+                   
+
+                    <div class="prog-card-vertical">
+
+                        <h3>Domingo - Culto </h3>
+
+                        <p>19h</p>
+
+                    </div>
+
+
+
+                    <div class="prog-card-vertical">
+
+                        <h3>Quinta-feira - Culto</h3>
+
+                        <p>19:30h</p>
+
+                    </div>
+
+
+
+                    <div class="prog-card-vertical">
+
+                        <h3>Segunda a Sexta-feira - Oração</h3>
+
+                        <p>20h</p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="mapa-content">
+
+                    <div class="mapa-info">
+
+                        <h4>📍 Nos Visite</h4>
+
+                        <p><strong>Av. Guarujá, quadra 36 - Lote 02</strong></p>
+
+                        <p>São José de Imbassaí, Maricá - RJ</p>
+
+                        <p>CEP: 24931-105</p>
+
+                        <a href="https://www.google.com/maps/dir//Igreja+mais,+Av.+Guaruj%C3%A1,+S%C3%A3o+Jos%C3%A9+de+Imbassa%C3%AD,+Maric%C3%A1+-+RJ/@-22.9326234,-42.875118,17z"
+
+                            target="_blank" class="btn-mapa">
+
+                            🗺️ Abrir no Google Maps
+
+                        </a>
+
+                    </div>
+
+                   
+
+                    <div class="mapa-iframe">
+
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.4778201288914!2d-42.87769292504459!3d-22.93262343879421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x998d83071c2c5b%3A0xf177839426673b75!2sIgreja%20mais!5e0!3m2!1spt-BR!2sbr!4v1765645695818!5m2!1spt-BR!2sbr"
+
+                            width="100%"
+
+                            height="250"
+
+                            style="border:0;"
+
+                            allowfullscreen=""
+
+                            loading="lazy"
+
+                            referrerpolicy="no-referrer-when-downgrade">
+
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="carousel-container">
+
+                    <div class="carousel-slides" id="carouselSlides">
+
+                        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1543324905-9922af601cf9?w=800" alt="Foto da Igreja 1"></div>
+
+                        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1517748802934-8c83a15dc211?w=800" alt="Foto da Igreja 2"></div>
+
+                        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1601614051061-3a0553018e69?w=800" alt="Foto da Igreja 3"></div>
+
+                        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1506509491771-419b4b20cc33?w=800" alt="Foto da Igreja 4"></div>
+
+                        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1506509491771-419b4b20cc33?w=800" alt="Foto da Igreja 5"></div>
+
+                    </div>
+
+
+
+                    <button class="carousel-btn" id="prevBtn">❮</button>
+
+                    <button class="carousel-btn" id="nextBtn">❯</button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <section id="quem-somos" class="section">
+
+            <div class="container">
+
+                <h2>Quem Somos</h2>
+
+                <p>Somos uma comunidade de fé que busca viver o amor de Cristo de forma prática e transformadora.</p>
+
+            </div>
+
+        </section>
+
+
+
+        <section id="historia" class="section">
+
+            <div class="container">
+
+                <h2>História</h2>
+
+                <p>Nossa igreja começou com um pequeno grupo de pessoas apaixonadas por Deus e pelo próximo. Ao longo dos anos, crescemos em fé e em número, sempre mantendo nosso foco em Jesus.</p>
+
+            </div>
+
+        </section>
+
+
+
+        <section id="celulas" class="section">
+
+            <div class="container">
+
+                <h2>Células</h2>
+
+                <p>As células são grupos pequenos que se reúnem durante a semana para comunhão, estudo bíblico e oração.</p>
+
+               
+
+                <div class="celulas-grid">
+
+                    <div class="celula-card">
+
+                        <h3>Célula Márcia e Rodrigo</h3>
+
+                        <p><strong>Líder: Rodrigo</strong></p>
+
+                        <p><strong>Dia:</strong> Toda Quarta-feira</p>
+
+                        <p><strong>Horário:</strong> 19:30h</p>
+
+                        <p><strong>Contatos: 219999999</strong></p>
+
+                    </div>
+
+
+
+                    <div class="celula-card">
+
+                        <h3>Célula Dilmeia e Cimar</h3>
+
+                        <p><strong>Líder: Cimar</strong></p>
+
+                        <p><strong>Dia:</strong> Toda Quarta-feira</p>
+
+                        <p><strong>Horário:</strong> 19h30</p>
+
+                        <p><strong>Contatos: 219999999</strong></p>
+
+                    </div>
+
+
+
+                    <div class="celula-card">
+
+                        <h3>Célula Ellen e João</h3>
+
+                        <p><strong>Líder: João</strong></p>
+
+                        <p><strong>Dia:</strong> Sexta-feira</p>
+
+                        <p><strong>Horário:</strong> 19:30h</p>
+
+                        <p><strong>Contatos: 219999999</strong></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section id="programacao" class="section">
+            <div class="container">
+                <h2>Programação Fixa</h2>
+                
+                <div class="schedule">
+                    
+                    <div class="schedule-item">
+                        <h3>Domingo</h3>
+                        <p>Culto de Adoração - 19h</p>
+                    </div>
+                    </div>
+            </div>
+        </section> 
+        <section id="oracao" class="section">
+            <div class="container">
+                <h2>🙏 Pedido de Oração</h2>
+                <p>Nós cremos no poder da oração. Envie-nos o seu pedido e oremos por você e sua família. O seu pedido será tratado com total confidencialidade e será enviado diretamente para a caixa de e-mail da equipe de intercessão.</p>
+
+                <form action="https://formsubmit.co/carolcastrosantos@gmail.com" method="POST" class="prayer-form">
+                    
+                    <input type="hidden" name="_next" value="URL_DO_SEU_SITE/index.html?section=oracao&sent=true">
+                    <input type="hidden" name="_subject" value="NOVO PEDIDO DE ORAÇÃO RECEBIDO">
+                    <input type="hidden" name="_template" value="box">
+
+                    <label for="nome">Seu Nome (Opcional):</label>
+                    <input type="text" id="nome" name="Nome" placeholder="Seu nome (se quiser se identificar)">
+
+                    <label for="email">Seu Email (Para contato confidencial, Opcional):</label>
+                    <input type="email" id="email" name="Email" placeholder="seu.email@exemplo.com">
+
+                    <label for="pedido">Seu Pedido de Oração (Obrigatório):</label>
+                    <textarea id="pedido" name="Pedido de Oração" rows="6" required placeholder="Escreva aqui o seu pedido..."></textarea>
+                    
+                    <button type="submit" class="btn-submit">Enviar Pedido de Oração</button>
+
+                </form>
+
+                <div id="successMessage" style="display:none; margin-top: 20px; padding: 20px; background: #e6ffed; border: 1px solid #c3e6cb; border-radius: 8px; color: #155724; font-weight: bold; text-align: center;">
+                    ✅ Pedido de oração enviado com sucesso! A equipe de intercessão estará orando por você.
+                </div>
+            </div>
+        </section>
+    </main>
+
+   
+
+    <footer>
+
+        <p>© 2026 IGREJA MAIS - DESENVOLVIDO POR DIOGO RIBEIRO</p>
+
+    </footer>
+
+
+
+    <script>
+    console.log('⚡ Script carregado!');
+
+    // 1. Função para trocar de seção
+    function mostrarSecao(secaoId) {
+        var secoes = document.querySelectorAll('.section');
+        secoes.forEach(secao => secao.style.display = 'none');
+        document.getElementById(secaoId).style.display = 'block';
+        window.scrollTo(0, 0);
+    }
+
+    // 2. Função para buscar versículo da API
+    function versiculoDoDia() {
+        console.log('🔍 Iniciando busca do versículo...');
+        
+        fetch('https://www.abibliadigital.com.br/api/verses/nvi/random')
+            .then(response => {
+                console.log('📡 Resposta recebida:', response);
+                console.log('Status:', response.status);
+                console.log('OK?', response.ok);
+                
+                if (!response.ok) {
+                    throw new Error('API retornou status: ' + response.status);
+                }
+                
+                return response.json();
+            })
+            .then(data => {
+                console.log('✅ Dados recebidos:', data);
+                
+                const texto = data.text;
+                const referencia = data.book.name + ' ' + data.chapter + ':' + data.number;
+                
+                document.getElementById('versiculo-texto').textContent = '"' + texto + '"';
+                document.getElementById('versiculo-ref').textContent = '— ' + referencia;
+                
+                console.log('✅ Versículo exibido com sucesso!');
+            })
+            .catch(error => {
+                console.error('❌ Erro na API:', error);
+                console.log('🔄 Usando versículo fallback...');
+                
+                document.getElementById('versiculo-texto').textContent = '"Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles."';
+                document.getElementById('versiculo-ref').textContent = '— Mateus 18:20';
+            });
+    }
+
+    // 3. Formulário de Pedido de Oração  ← ADICIONA AQUI
+    document.getElementById('form-oracao').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nome = document.getElementById('nome').value || 'Anônimo';
+        const pedido = document.getElementById('pedido').value;
+        
+        const btnEnviar = document.querySelector('.btn-enviar');
+        btnEnviar.disabled = true;
+        btnEnviar.textContent = '📨 Enviando...';
+        
+        fetch('https://formsubmit.co/ajax/SEU_EMAIL_AQUI@gmail.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: nome,
+                message: pedido,
+                _subject: '🙏 Novo Pedido de Oração - Igreja MAIS',
+                _captcha: 'false',
+                _template: 'box'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('mensagem-sucesso').style.display = 'block';
+            document.getElementById('form-oracao').style.display = 'none';
+            
+            setTimeout(() => {
+                mostrarSecao('home');
+                document.getElementById('mensagem-sucesso').style.display = 'none';
+                document.getElementById('form-oracao').style.display = 'block';
+                document.getElementById('form-oracao').reset();
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = '📨 Enviar Pedido';
+            }, 3000);
+        })
+        .catch(error => {
+            document.getElementById('mensagem-erro').style.display = 'block';
+            btnEnviar.disabled = false;
+            btnEnviar.textContent = '📨 Enviar Pedido';
+            
+            setTimeout(() => {
+                document.getElementById('mensagem-erro').style.display = 'none';
+            }, 5000);
+        });
+    });
+
+    // 4. Chamada ao carregar a página
+    window.onload = function() {
+        console.log('🚀 Página carregada!');
+        mostrarSecao('home');
+        versiculoDoDia();
+    };
+</script>
+
+
+
+
+</body>
+
+</html> 

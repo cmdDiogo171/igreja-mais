@@ -1,0 +1,689 @@
+/* =========================================
+   RESET & CONFIGURAÇÕES GLOBAIS
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f4f4f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+}
+
+/* =========================================
+   BARRA LATERAL SOCIAL (DIREITA)
+   ========================================= */
+.social-sidebar {
+    position: fixed;
+    top: 40%;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+
+.social-sidebar img {
+    width: 34px;
+    height: 34px;
+    filter: grayscale(20%);
+    transition: 0.3s;
+}
+
+.social-sidebar img:hover {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* =========================================
+   HEADER (CABEÇALHO)
+   ========================================= */
+header {
+    background-color: #ffffff;
+    padding: 25px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.header-text {
+    text-align: center;
+}
+
+.header-text h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1c2a40;
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 17px;
+    color: #555;
+    text-align: center;
+}
+
+/* =========================================
+   MENU DE NAVEGAÇÃO
+   ========================================= */
+nav {
+    background-color: #1c2a40;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: 0.2s;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #2f4363;
+}
+
+/* =========================================
+   CONTEÚDO PRINCIPAL & SEÇÕES
+   ========================================= */
+
+   /* ====== PEDIDO DE ORAÇÃO (Novo Bloco) ====== */
+.prayer-form {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prayer-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #1c2a40;
+}
+
+.prayer-form input[type="text"],
+.prayer-form input[type="email"],
+.prayer-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Garante que padding e border não aumentem a largura */
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+.prayer-form textarea {
+    resize: vertical;
+}
+
+.prayer-form input:focus,
+.prayer-form textarea:focus {
+    border-color: #1c2a40;
+    outline: none;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #1c2a40;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    margin-top: 20px;
+}
+
+.btn-submit:hover {
+    background: #2f4363;
+}
+
+/* ====== HOME COM 2 COLUNAS (Versículo e Programação) ====== */
+#home {
+    background-color: #f4f4f8;
+    padding: 40px 20px;
+}
+
+.home-grid-layout {
+    display: grid;
+    /* Colunas: Esquerda (450px), Direita (1fr) */
+    grid-template-columns: 450px 1fr; 
+    /* Três linhas: Célula/Prog, Mapa/Carrossel, Vazia */
+    grid-template-rows: auto auto 1fr; 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+}
+
+/* ====== COLUNA ESQUERDA (Versículo) ====== */
+.home-left-col {
+    background: #1c2a40; 
+    padding: 30px;
+    border-radius: 12px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    text-align: center; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-left-col h3 {
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.versiculo-box {
+    background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px; 
+}
+
+/* Overlay escuro para melhorar leitura do texto */
+.versiculo-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65); 
+    border-radius: 10px;
+    z-index: 1;
+}
+
+/* Garantir que o texto fique acima do overlay */
+.versiculo-box p {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    font-size: 1.2rem; 
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+.versiculo-box cite {
+    position: relative;
+    z-index: 2;
+    color: #ffd700; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    font-size: 0.95rem;
+    font-style: normal;
+    display: block;
+    text-align: center; 
+    font-weight: 600;
+}
+
+/* ====== COLUNA DIREITA (Programação Compacta) ====== */
+.home-right-col {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.home-right-col h2 {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.prog-card-vertical {
+    background: #f8f8f8;
+    padding: 18px 25px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 3px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.prog-card-vertical:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.prog-card-vertical h3 {
+    color: #1a1a1a;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.prog-card-vertical p {
+    color: #6b6b6b;
+    font-size: 0.95rem;
+    margin: 0;
+    font-weight: 300;
+}
+
+/* 🎯 AJUSTE DO MAPA: Ocupa a segunda linha, primeira coluna (450px) */
+.mapa-content {
+    grid-column: 1; /* Coluna 1: 450px */
+    grid-row: 2; /* Linha 2 */
+    
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px; 
+    
+    display: flex; 
+    flex-direction: column;
+    gap: 15px;
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%; 
+}
+
+.mapa-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.mapa-info h4 {
+    font-size: 1.3rem; 
+    color: #1c2a40;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mapa-info p {
+    color: #2d2d2d;
+    font-size: 0.95rem;
+    margin: 5px 0;
+    line-height: 1.6;
+    text-align: left;
+    font-weight: 400;
+}
+
+.mapa-info p strong {
+    display: block;
+}
+
+.btn-mapa {
+    display: inline-flex; 
+    margin-top: 15px; 
+    padding: 10px 20px;
+    background: #1c2a40; 
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    width: fit-content;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-mapa:hover {
+    background: #2f4363;
+    transform: translateY(-2px);
+}
+
+.mapa-iframe {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.mapa-iframe iframe {
+    width: 100%;
+    height: 250px; 
+    display: block; 
+}
+
+
+/* =========================================
+   CARROSSEL (Galeria de Fotos)
+   ========================================= */
+.carousel-container {
+    grid-column: 2; /* Coluna 2: 1fr (ocupa o resto) */
+    grid-row: 2; /* Linha 2, ao lado do mapa */
+    
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; 
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; 
+}
+
+.carousel-slide {
+    min-width: 100%; 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; 
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Botões de navegação */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 20;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#prevBtn {
+    left: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#nextBtn {
+    right: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+
+/* Configuração Geral das Seções */
+.section {
+    display: none;
+    padding: 40px 20px;
+    width: 100%;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 26px;
+    color: #1c2a40;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.section p {
+    margin-top: 5px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* Grid de Células (4 COLUNAS EM TELAS GRANDES) */
+.celulas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media (min-width: 1200px) {
+    .celulas-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.celula-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 4px solid #1c2a40;
+}
+
+.celula-card h3 {
+    margin-bottom: 10px;
+    color: #1c2a40;
+}
+
+/* Grid de Programação */
+.schedule {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.schedule-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.schedule-item h3 {
+    color: #1c2a40;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* =========================================
+   FOOTER (RODAPÉ)
+   ========================================= */
+footer {
+    background-color: #1c2a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    font-size: 12px; /* <--- AJUSTADO: Tamanho do copyright e desenvolvido por */
+    width: 100%;
+}
+
+/* ====== RESPONSIVO ====== */
+@media (max-width: 900px) {
+    .home-grid-layout {
+        /* No mobile, tudo volta a ser uma coluna única */
+        grid-template-columns: 1fr;
+    }
+    
+    /* Garantir que o mapa fique na primeira coluna no mobile */
+    .mapa-content {
+        grid-column: 1;
+        grid-row: auto;
+    }
+    
+    /* No Mobile, o carrossel fica abaixo do mapa, ambos em coluna 1 */
+    .carousel-container {
+        grid-column: 1; /* Ocupa a única coluna */
+        grid-row: 3; /* Vai para a terceira linha, abaixo do mapa */
+    }
+    
+    .mapa-iframe iframe {
+        height: 250px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .header-text h1 {
+        font-size: 28px;
+    }
+    
+    .celulas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .header-text h1 {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    nav ul {
+        gap: 5px;
+    }
+    
+    nav ul li a {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+    
+    #home {
+        padding: 20px 15px;
+    }
+    
+    .home-left-col,
+    .home-right-col,
+    .mapa-content {
+        padding: 20px;
+    }
+    
+    .prog-card-vertical {
+        padding: 15px;
+    }
+    
+    .section {
+        padding: 30px 15px;
+    }
+    
+    .section h2 {
+        font-size: 22px;
+    }
+    
+    .social-sidebar {
+        right: 5px;
+        gap: 10px;
+    }
+    
+    .social-sidebar img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    footer {
+        padding: 15px;
+        font-size: 12px;
+    }
+}
